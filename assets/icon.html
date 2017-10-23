@@ -1,0 +1,146 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+</head>
+
+<body>
+    <style>
+        body {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            overflow: hidden;
+            font-family: "Roboto";
+            cursor: default;
+            outline: none;
+            user-select: none;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            background: #FFF;
+        }
+        
+        #mask_android {
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            bottom: -40px;
+            left: -40px;
+            border-radius: 50%;
+            border: 48px solid #37474F;
+            opacity: 1;
+            display: block;
+        }
+        
+        #mask_apple {
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            bottom: -40px;
+            left: -40px;
+            border-radius: 100px;
+            border: 40px solid #000;
+            opacity: 0;
+            display: block;
+        }
+        
+        #border {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            bottom: 8px;
+            left: 8px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+            border-radius: 50%;
+            display: block;
+        }
+        
+        #content {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 192px;
+            width: 192px;
+            border: 4px solid #000;
+            overflow: hidden;
+            background: #37474F;
+        }
+        
+        #drop {
+            position: absolute;
+            top: 127px;
+            left: 16px;
+            height: 80px;
+            width: 80px;
+            background: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.4));
+            transform-origin: top center;
+            transform: rotate(-45deg);
+        }
+        
+        #light_1 {
+            position: absolute;
+            bottom: -116px;
+            left: -116px;
+            height: 240px;
+            width: 240px;
+            background: #263238;
+            border-radius: 50%;
+        }
+        
+        #light_2 {
+            position: absolute;
+            bottom: -92px;
+            left: -92px;
+            height: 240px;
+            width: 240px;
+            background: #ffeb3b;
+            border-radius: 50%;
+        }
+        
+        #light_3 {
+            position: absolute;
+            bottom: -68px;
+            left: -68px;
+            height: 240px;
+            width: 240px;
+            background: #fdd835;
+            border-radius: 50%;
+        }
+        
+        #light_4 {
+            position: absolute;
+            bottom: -44px;
+            left: -44px;
+            height: 240px;
+            width: 240px;
+            background: #fbc02d;
+            border-radius: 50%;
+        }
+    </style>
+
+    <div id="content">
+        <div id="light_4"></div>
+        <div id="light_3"></div>
+        <div id="light_2"></div>
+        <div id="drop"></div>
+        <div id="light_1"></div>
+        <div id="border"></div>
+
+        <div id="mask_android"></div>
+        <div id="mask_apple"></div>
+    </div>
+</body>
+
+</html>
