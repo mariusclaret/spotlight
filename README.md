@@ -1,4 +1,4 @@
-![Spotlight Icon](source/192.png)
+![Spotlight Icon](source/144.png)
 
 # Spotlight
 
