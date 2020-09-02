@@ -3,12 +3,12 @@
 }
 
 ::-webkit-input-placeholder {
-    color: #263238;
+    color: #757575;
 }
 
 ::selection {
-    color: #FFF;
-    background: #263238;
+    color: #EEE;
+    background: #181818;
 }
 
 body {
@@ -19,7 +19,7 @@ body {
     left: 0;
     padding: 0;
     margin: 0;
-    background: #37474F;
+    background: #181818;
     overflow: hidden;
     outline: none;
     cursor: default;
@@ -36,15 +36,24 @@ body {
     user-select: none;
 }
 
+#protect {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    height: 120px;
+    pointer-events: none;
+}
+
 #search {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    left: 8px;
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    left: 16px;
     height: 48px;
-    background: #607D8B;
-    border-radius: 2px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.24);
+    background: #222222;
+    border-radius: 8px;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.16);
     overflow: hidden;
     transition: transform 320ms;
 }
@@ -59,7 +68,7 @@ body {
     left: 16px;
     height: 24px;
     width: 24px;
-    fill: #263238;
+    fill: #757575;
 }
 
 #search_input {
@@ -70,7 +79,7 @@ body {
     width: calc(100% - 112px);
     margin: 0;
     padding: 16px 56px;
-    color: #263238;
+    color: #757575;
     font-size: 16px;
     font-weight: 500;
     line-height: 16px;
@@ -90,7 +99,7 @@ body {
     width: 24px;
     padding: 8px;
     border-radius: 50%;
-    fill: #263238;
+    fill: #757575;
     cursor: pointer;
     transition: background 320ms;
     display: none;
@@ -111,7 +120,7 @@ body {
     right: 0;
     bottom: 0;
     left: 0;
-    padding: 64px 0 0 0;
+    padding: 80px 0 0 0;
     overflow-x: hidden;
     overflow-y: scroll;
 }
@@ -120,9 +129,9 @@ body {
     position: relative;
     float: left;
     height: 200px;
-    width: calc(100% - 8px);
-    padding: 0 4px;
-    margin-bottom: 8px;
+    width: calc(100% - 16px);
+    padding: 0 8px;
+    margin: 0 0 16px 0;
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
@@ -132,10 +141,10 @@ body {
 #random_intro {
     display: inline-block;
     height: 200px;
-    width: calc(100vw - 16px);
-    margin: 0 4px;
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 2px;
+    width: calc(100vw - 32px);
+    margin: 0 8px;
+    background: #222222;
+    border-radius: 8px;
     overflow: hidden;
     white-space: normal;
     transform: perspective(0);
@@ -146,7 +155,7 @@ body {
     top: 24px;
     right: 24px;
     left: 24px;
-    color: #FFF;
+    color: #EEE;
     font-size: 10px;
     font-weight: 500;
     line-height: 16px;
@@ -159,7 +168,7 @@ body {
     top: 48px;
     right: 24px;
     left: 24px;
-    color: #FFF;
+    color: #EEE;
     font-size: 72px;
     font-weight: 200;
     line-height: 72px;
@@ -173,7 +182,7 @@ body {
     height: 24px;
     width: 24px;
     padding: 8px;
-    fill: #FFF;
+    fill: #EEE;
     background: rgba(255, 255, 255, 0.08);
     border-radius: 50%;
     transition: background 320ms;
@@ -187,18 +196,14 @@ body {
     display: inline-block;
     height: 200px;
     width: calc(100vw - 32px);
-    margin: 0 4px;
+    margin: 0 8px;
     background: rgba(255, 255, 255, 0.08);
-    border-radius: 2px;
+    border-radius: 8px;
     overflow: hidden;
     cursor: pointer;
     white-space: normal;
-    transition: opacity 320ms;
+    transition: opacity 200ms;
     transform: perspective(0);
-}
-
-.random:active {
-    opacity: 0.8;
 }
 
 .random > img {
@@ -207,6 +212,7 @@ body {
     left: 0;
     height: 100%;
     width: 100%;
+    border-radius: 8px;
     object-fit: cover;
     pointer-events: none;
 }
@@ -218,13 +224,17 @@ body {
     left: 0;
     height: auto;
     padding: 64px 32px 16px 32px;
-    color: #FFF;
-    font-size: 16px;
-    font-weight: 400;
+    color: #EEE;
+    font-size: 20px;
+    font-weight: 500;
     line-height: 20px;
     text-align: center;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.24);
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+}
+
+.random > div > span {
+    font-size: 12px;
 }
 
 .title {
@@ -233,8 +243,8 @@ body {
     height: 24px;
     width: calc(100% - 32px);
     padding: 0 16px;
-    color: #FFF;
-    font-size: 14px;
+    color: #EEE;
+    font-size: 16px;
     font-weight: 500;
     line-height: 24px;
     overflow: hidden;
@@ -246,8 +256,8 @@ body {
     position: relative;
     float: left;
     height: 208px;
-    width: calc(100% - 8px);
-    padding: 4px;
+    width: calc(100% - 16px);
+    padding: 8px;
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
@@ -258,18 +268,18 @@ body {
     display: inline-block;
     height: 200px;
     width: 96px;
-    margin: 4px;
-    background: rgba(255, 255, 255, 0.08);
+    margin: 8px;
     border-radius: 2px;
     overflow: hidden;
     cursor: pointer;
     white-space: normal;
-    transition: opacity 320ms;
+    transition: opacity 200ms;
     transform: perspective(0);
 }
 
+.random:active,
 .media_item:active {
-    opacity: 0.8;
+    opacity: 0.5;
 }
 
 .media_item > img {
@@ -278,19 +288,20 @@ body {
     left: 0;
     height: 144px;
     width: 96px;
+    border-radius: 8px;
     object-fit: cover;
     pointer-events: none;
 }
 
 .media_item > span {
     position: absolute;
-    right: 8px;
+    right: 0;
     bottom: 8px;
-    left: 8px;
+    left: 0;
     height: 42px;
-    color: #FFF;
+    color: #EEE;
     font-size: 12px;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 14px;
     word-wrap: break-word;
     overflow: hidden;
@@ -307,7 +318,7 @@ body {
 }
 
 #blocker.active {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.4);
     visibility: visible;
     transition: background 320ms, visibility 0ms;
 }
@@ -320,7 +331,7 @@ body {
     width: 100%;
     overflow-x: hidden;
     overflow-y: scroll;
-    background: #37474F;
+    background: #181818;
     visibility: hidden;
     transition: transform 320ms, visibility 0ms 320ms;
 }
@@ -354,7 +365,7 @@ body {
     left: 16px;
     height: 120px;
     width: 80px;
-    border-radius: 2px;
+    border-radius: 8px;
     object-fit: cover;
     pointer-events: none;
 }
@@ -365,9 +376,9 @@ body {
     right: 64px;
     left: 112px;
     height: 72px;
-    color: #FFF;
+    color: #EEE;
     font-size: 20px;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 24px;
     overflow: hidden;
 }
@@ -380,13 +391,13 @@ body {
     width: auto;
     max-width: calc(100% - 128px);
     padding: 0 16px;
-    color: #FFF;
+    color: #EEE;
     font-size: 14px;
     font-weight: 500;
     line-height: 36px;
     text-transform: uppercase;
     background: rgba(255, 255, 255, 0.08);
-    border-radius: 2px;
+    border-radius: 8px;
     border: none;
     outline: none;
     overflow: hidden;
@@ -406,7 +417,7 @@ body {
     right: 8px;
     height: 24px;
     width: 24px;
-    fill: #FFF;
+    fill: #EEE;
     padding: 8px;
     border-radius: 50%;
     cursor: pointer;
@@ -423,9 +434,9 @@ body {
     height: auto;
     width: calc(100% - 32px);
     padding: 0 16px;
-    color: #FFF;
+    color: #EEE;
     font-size: 14px;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 20px;
 }
 
@@ -434,7 +445,7 @@ body {
     float: left;
     height: 240px;
     width: 100%;
-    margin: 16px 0 8px 0;
+    margin: 16px 0;
     background: rgba(255, 255, 255, 0.08);
     overflow-x: scroll;
     overflow-y: hidden;
@@ -458,7 +469,7 @@ body {
     width: 24px;
     margin: 24px calc(50% - 20px);
     padding: 8px;
-    fill: #FFF;
+    fill: #EEE;
     border-radius: 50%;
     cursor: pointer;
     transition: background 320ms;
@@ -472,11 +483,11 @@ body {
     position: relative;
     float: left;
     height: auto;
-    width: calc(100% - 32px);
-    padding: 0 16px 16px 16px;
-    color: #FFF;
-    font-size: 14px;
-    font-weight: 400;
+    width: calc(100% - 80px);
+    padding: 0 40px 40px 40px;
+    color: #EEE;
+    font-size: 12px;
+    font-weight: 500;
     line-height: 20px;
     text-align: center;
     cursor: pointer;
@@ -489,11 +500,11 @@ body {
     left: 0;
     height: auto;
     padding: 16px;
-    color: #FFF;
+    color: #EEE;
     font-size: 14px;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 20px;
-    background: #323232;
+    background: #222222;
     visibility: hidden;
     transition: transform 320ms, visibility 0ms 320ms;
 }

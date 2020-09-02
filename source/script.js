@@ -15,12 +15,12 @@ const database = firebase.database();
 const messaging = firebase.messaging();
 
 const categories = {
-    "Upcoming movies": "/movie/upcoming",
-    "Now playing movies": "/movie/now_playing",
-    "Now playing series": "/tv/on_the_air",
-    "Popular movies": "/movie/popular",
-    "Popular series": "/tv/popular",
-    "Popular people": "/person/popular"
+    "Upcoming Movies": "/movie/upcoming",
+    "Now Playing Movies": "/movie/now_playing",
+    "Now Playing Series": "/tv/on_the_air",
+    "Popular Movies": "/movie/popular",
+    "Popular Series": "/tv/popular",
+    "Popular People": "/person/popular"
 };
 
 const preload = new Image();
@@ -37,12 +37,12 @@ const storage = {
     set: function (key, value) {
         try {
             localStorage.setItem(key, value);
-        } catch (e) {}
+        } catch (e) { }
     },
     remove: function (key) {
         try {
             localStorage.removeItem(key);
-        } catch (e) {}
+        } catch (e) { }
     }
 };
 
@@ -67,12 +67,12 @@ let position = 0;
 
 document.getElementById("content").onscroll = function () {
     const top = document.getElementById("content").scrollTop;
-    document.getElementById("search").className = (top >= 56 && top > position) ? "active" : "";
+    document.getElementById("search").className = (top >= 120 && top > position) ? "active" : "";
     position = top;
 };
 
 document.getElementById("twitter").onclick = function () {
-    window.open("https://twitter.com/rccnmarius");
+    window.open("https://twitter.com/mariusclaret");
 };
 
 document.getElementById("tmdb").onclick = function () {
@@ -171,14 +171,14 @@ document.getElementById("random_action").onclick = function () {
             item.appendChild(image);
 
             creator = document.createElement("div");
-            creator.innerHTML = "<b>" + value[counter].title + "</b><br>" + formatDate(value[counter].release_date);
+            creator.innerHTML = value[counter].title + "<br><span>" + formatDate(value[counter].release_date) + "</span>";
             item.appendChild(creator);
 
             parent.appendChild(item);
         }
 
         setTimeout(function () {
-            document.getElementById("random").scrollLeft = document.getElementById("random_intro").clientWidth;
+            document.getElementById("random").scrollLeft = document.getElementById("random_intro").clientWidth + 16;
         }, 320);
     });
 };
@@ -235,7 +235,7 @@ function expand(hash, type, id) {
     if (type === "movie") {
         reference_1 = "/movie/" + id + "/credits";
         reference_2 = "/movie/" + id + "/recommendations";
-        title_1 = "Movie cast";
+        title_1 = "Movie Cast";
         title_2 = "Recommendations";
         type_1 = "P";
         type_2 = "M";
@@ -244,7 +244,7 @@ function expand(hash, type, id) {
     if (type === "tv") {
         reference_1 = "/tv/" + id + "/credits";
         reference_2 = "/tv/" + id + "/recommendations";
-        title_1 = "Series cast";
+        title_1 = "Series Cast";
         title_2 = "Recommendations";
         type_1 = "P";
         type_2 = "T";
@@ -253,8 +253,8 @@ function expand(hash, type, id) {
     if (type === "person") {
         reference_1 = "/person/" + id + "/movie_credits";
         reference_2 = "/person/" + id + "/tv_credits";
-        title_1 = "Movie credits";
-        title_2 = "Series credits";
+        title_1 = "Movie Credits";
+        title_2 = "Series Credits";
         type_1 = "M";
         type_2 = "T";
     }
@@ -328,10 +328,10 @@ function expand(hash, type, id) {
             document.getElementById("expand_poster").src = "/placeholder.png";
         }
 
-        document.getElementById("expand_backdrop").src = tmdb_image + 1000 + (general.poster_path || general.profile_path);
+        document.getElementById("expand_backdrop").src = tmdb_image + 780 + (general.poster_path || general.profile_path);
         document.getElementById("expand_poster").src = tmdb_image + 185 + (general.poster_path || general.profile_path);
         document.getElementById("expand_name").innerText = (general.title || general.name) + " " + (time || "");
-        document.getElementById("expand_share").innerText = storage.get("$") ? "Push notification" : "Share with friends";
+        document.getElementById("expand_share").innerText = storage.get("$") ? "Push notification" : "Share";
         document.getElementById("expand_description").innerText = (general.overview || general.biography || "Overview not available.").replace(/&amp;/g, "&").replace(/([.?!])\s*(?=[A-Z])/g, "$1|").split("|").slice(0, 3).join(" ");
         document.getElementById("expand_title_1").innerText = title_1;
         document.getElementById("expand_title_2").innerText = title_2;
@@ -418,16 +418,6 @@ if (hash.length > 1) {
 } else {
     window.onhashchange();
 }
-
-setTimeout(function () {
-    messaging.requestPermission()
-        .then(function () {
-            return messaging.getToken();
-        })
-        .then(function (token) {
-            if (token) database.ref("tokens").child(token).set(true);
-        });
-}, 16000);
 
 if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("/worker.js").then(function (worker) {

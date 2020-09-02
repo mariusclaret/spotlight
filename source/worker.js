@@ -10,7 +10,7 @@ firebase.initializeApp({
 });
 
 const messaging = firebase.messaging();
-const cache_name = "v2.0";
+const cache_name = "v3.0";
 const fine_caches = [cache_name];
 const static_files = [
     "/",
